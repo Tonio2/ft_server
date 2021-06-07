@@ -1,0 +1,46 @@
+apt-get update
+apt install nginx mariadb-server mariadb-client php php-fpm php-mysql
+service mysql start
+mysql -u root -e "CREATE USER 'tony'@localhost IDENTIFIED BY 'root';"
+mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'tony'@localhost IDENTIFIED BY 'root';"
+mysql -u root -e "FLUSH PRIVILEGES;"
+apt install php-{mbstring,zip,gd,xml,pear,gettext,cgi} wget
+wget https://files.phpmyadmin.net/phpMyAdmin/5.1.0/phpMyAdmin-5.1.0-english.tar.gz
+mkdir /var/www/html/phpmyadmin
+tar xzf phpMyAdmin-5.1.0-english.tar.gz --strip-components=1 -C /var/www/html/phpmyadmin
+cp /var/www/html/phpmyadmin/config{.sample,}.inc.php
+chmod 660 /var/www/html/phpmyadmin/config.inc.php
+chown -R www-data:www-data /var/www/html/phpmyadmin
+//apt install php-xml
+service nginx start
+service mysql start
+service php7.3-fpm start
+
+
+
+echo nginx.conf
+
+service nginx restart
+apt install php-{mbstring,zip,gd,xml,pear,gettext,cgi}
+
+
+
+
+edit config -> add blowfish
+$2y$10$WLriAYG2Xd/39JFCnG3GUuTNOGQpEZT/Pe/tj4DByc98eLayrsFf.
+ilovedocker
+
+service nginx restart
+
+service php7.3-fpm restart
+add user : https://phoenixnap.com/kb/how-to-create-mariadb-user-grant-privileges
+restart services
+--------------------
+mysql -u root -e "CREATE DATABASE wordpress_db;"
+apt install php php-mysql php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip
+cd /var/www/html/
+wget https://wordpress.org/latest.tar.gz
+tar -xvzf latest.tar.gz
+cd wordpress
+cp wp-config-sample.php wp-config.php
+chown -R www-data:www-data /var/www/html/wordpress
